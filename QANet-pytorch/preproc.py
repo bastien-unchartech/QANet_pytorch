@@ -281,8 +281,8 @@ def save(filename, obj, message=None):
 def preproc(config):
 
     word_counter, char_counter = Counter(), Counter()
-    # train_examples, train_eval = process_file(config.train_file, "train", word_counter, char_counter)
-    train_examples, train_eval = process_file(config.dev_file, "train", word_counter, char_counter)
+    train_examples, train_eval = process_file(config.train_file, "train", word_counter, char_counter)
+    # train_examples, train_eval = process_file(config.dev_file, "train", word_counter, char_counter)
     dev_examples, dev_eval = process_file(config.dev_file, "dev", word_counter, char_counter)
     test_examples, test_eval = process_file(config.test_file, "test", word_counter, char_counter)
 

@@ -24,7 +24,9 @@ print(device)
 class SQuADDataset(Dataset):
     def __init__(self, npz_file, num_steps, batch_size):
         super().__init__()
+        print('tout va bien')
         data = np.load(npz_file)
+        print('toujours bien')
         self.context_idxs = torch.from_numpy(data["context_idxs"]).long()
         self.context_char_idxs = torch.from_numpy(data["context_char_idxs"]).long()
         self.ques_idxs = torch.from_numpy(data["ques_idxs"]).long()
@@ -32,6 +34,8 @@ class SQuADDataset(Dataset):
         self.y1s = torch.from_numpy(data["y1s"]).long()
         self.y2s = torch.from_numpy(data["y2s"]).long()
         self.ids = torch.from_numpy(data["ids"]).long()
+        print('yayyy')
+        del data
         num = len(self.ids)
         self.batch_size = batch_size
         self.num_steps = num_steps if num_steps >= 0 else num // batch_size
@@ -290,7 +294,7 @@ def train_entry(config):
             best_f1 = max(best_f1, dev_f1)
             best_em = max(best_em, dev_em)
 
-        fn = os.path.join(config.save_dir, "model.pt")
+        fn = os.path.join(config.save_dir, f"model_iter={iter}_best_f1={best_f1}.pt")
         torch.save(model, fn)
 
 

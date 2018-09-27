@@ -15,7 +15,8 @@ glove_word_file = os.path.join(home, "data", "glove", "glove.840B.300d.txt")
 
 target_dir = "data"
 event_dir = "log"
-save_dir = "model"
+# save_dir = "model"
+save_dir = "gdrive/My Drive/checkpoints"
 answer_dir = "log"
 train_record_file = os.path.join(target_dir, "train.npz")
 dev_record_file = os.path.join(target_dir, "dev.npz")
